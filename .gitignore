@@ -1,0 +1,27 @@
+# ===== 秘匿情報（絶対に GitHub に上げない）=====
+.env
+.env.local
+.env.development
+.env.production
+.env.staging
+.env.test
+
+# ===== npm のライブラリ置き場 =====
+node_modules/
+
+# ===== ビルド成果物 =====
+dist/
+build/
+
+# ===== ログ・一時ファイル =====
+*.log
+npm-debug.log*
+tmp/
+*.tmp
+
+# ===== macOS が勝手に作るファイル =====
+.DS_Store
+
+# ===== エディタ・IDE のローカル設定 =====
+.vscode/
+.idea/

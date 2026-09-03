@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Manga Creative Studio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="app-header__inner">
+      <div class="app-header__brand">
+        <span class="app-header__mark">MCS</span>
+        <div>
+          <h1 class="app-header__title">Manga Creative Studio</h1>
+          <p class="app-header__sub">企画から作画まで、漫画制作をひとつの画面で。</p>
+        </div>
+      </div>
+      <span class="badge-mock">モックアップ版</span>
+    </div>
+  </header>
+
+  <main class="layout">
+
+    <!-- ============ 1. 企画・アイデア出しアシスタント ============ -->
+    <section class="card card--assist" aria-labelledby="assist-title">
+      <div class="card__head">
+        <span class="card__step">STEP 1</span>
+        <h2 class="card__title" id="assist-title">企画・アイデア出しアシスタント</h2>
+        <p class="card__desc">
+          ラフ画像、キャラ設定、あらすじ、コマ割りのアイデアをもとに、漫画制作の方向性を一緒に整理します。
+        </p>
+      </div>
+
+      <div class="card__body">
+        <!-- ラフ画像アップロード -->
+        <div class="field">
+          <label class="field__label" for="rough-image">ラフ画像アップロード</label>
+          <label class="dropzone" for="rough-image">
+            <span class="dropzone__icon" aria-hidden="true">🖼️</span>
+            <span class="dropzone__main">クリックして画像を選択</span>
+            <span class="dropzone__sub">またはここにドラッグ＆ドロップ（PNG / JPG）</span>
+            <input type="file" id="rough-image" accept="image/*" class="dropzone__input" />
+          </label>
+          <p class="dropzone__filename" id="rough-filename">まだ画像は選択されていません</p>
+        </div>
+
+        <!-- 相談したい内容 -->
+        <div class="field">
+          <label class="field__label" for="consult-type">相談したい内容</label>
+          <select class="input" id="consult-type">
+            <option>ラフ画像の改善案がほしい</option>
+            <option>手書きラフからセリフを考えたい</option>
+            <option>キャラ設定を相談したい</option>
+            <option>あらすじを相談したい</option>
+            <option>コマ割りや構図を相談したい</option>
+          </select>
+        </div>
+
+        <!-- 自由入力 -->
+        <div class="field">
+          <label class="field__label" for="consult-text">相談内容の詳細</label>
+          <textarea class="input input--area" id="consult-text" rows="5"
+            placeholder="例：主人公は高校生で、異世界に迷い込む設定です。1ページ目の展開を相談したいです。"></textarea>
+        </div>
+
+        <button type="button" class="btn btn--assist">アイデアを相談する</button>
+
+        <!-- サンプル出力 -->
+        <div class="result">
+          <div class="result__head">
+            <span class="result__label">アシスタントからの回答</span>
+            <span class="result__tag" id="assist-tag">サンプル出力</span>
+          </div>
+          <p class="alert" id="assist-error" hidden></p>
+          <div class="result__body" id="assist-answer">改善案：
+・主人公の表情をもう少し大きく見せると感情が伝わりやすくなります。
+・1コマ目は状況説明、2コマ目は驚き、3コマ目は次の展開への引きを作ると読みやすくなります。
+・セリフは短めにして、絵で感情が伝わる構成にすると漫画らしさが出ます。</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 2. 漫画生成 ============ -->
+    <section class="card card--generate" aria-labelledby="generate-title">
+      <div class="card__head">
+        <span class="card__step">STEP 2</span>
+        <h2 class="card__title" id="generate-title">漫画生成</h2>
+        <p class="card__desc">
+          ストーリーやコマ数を指定して、漫画の完成イメージを生成します。
+        </p>
+      </div>
+
+      <div class="card__body">
+        <!-- ストーリー -->
+        <div class="field">
+          <label class="field__label" for="story">ストーリー</label>
+          <textarea class="input input--area" id="story" rows="5"
+            placeholder="例：内気な主人公が、放課後の教室で不思議なノートを見つける。ノートに名前を書くと、描いたキャラクターが現実に現れる。"></textarea>
+        </div>
+
+        <div class="field-grid">
+          <div class="field">
+            <label class="field__label" for="page-count">出力枚数</label>
+            <select class="input" id="page-count">
+              <option>1枚</option>
+              <option>2枚</option>
+              <option selected>4枚</option>
+              <option>8枚</option>
+            </select>
+          </div>
+          <div class="field">
+            <label class="field__label" for="panel-count">1ページあたりのコマ数</label>
+            <select class="input" id="panel-count">
+              <option>1コマ</option>
+              <option>2コマ</option>
+              <option selected>4コマ</option>
+              <option>6コマ</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="tone">漫画の雰囲気</label>
+          <select class="input" id="tone">
+            <option>少年漫画風</option>
+            <option>少女漫画風</option>
+            <option>ギャグ漫画風</option>
+            <option>ファンタジー風</option>
+            <option>日常漫画風</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="color-mode">配色</label>
+          <select class="input" id="color-mode">
+            <option value="mono">白黒（モノクロ）</option>
+            <option value="color">カラー</option>
+          </select>
+        </div>
+
+        <button type="button" class="btn btn--generate">漫画を生成する</button>
+
+        <!-- プレビュー -->
+        <div class="preview">
+          <div class="preview__head">
+            <span class="result__label">生成結果プレビュー</span>
+            <span class="result__tag" id="generate-tag">サンプル出力</span>
+          </div>
+          <p class="alert" id="generate-error" hidden></p>
+          <div class="preview__grid">
+            <article class="page-card">
+              <div class="page-card__head">
+                <span class="page-card__no">Page 1</span>
+                <span class="page-card__layout">4コマ構成</span>
+              </div>
+              <div class="page-card__thumb">
+                <span class="page-card__thumb-icon" aria-hidden="true">🖼️</span>
+                <span class="page-card__thumb-title">画像生成プレビュー</span>
+                <span class="page-card__thumb-note">ここに生成された漫画画像が表示されます</span>
+              </div>
+            </article>
+            <article class="page-card">
+              <div class="page-card__head">
+                <span class="page-card__no">Page 2</span>
+                <span class="page-card__layout">4コマ構成</span>
+              </div>
+              <div class="page-card__thumb">
+                <span class="page-card__thumb-icon" aria-hidden="true">🖼️</span>
+                <span class="page-card__thumb-title">画像生成プレビュー</span>
+                <span class="page-card__thumb-note">ここに生成された漫画画像が表示されます</span>
+              </div>
+            </article>
+            <article class="page-card">
+              <div class="page-card__head">
+                <span class="page-card__no">Page 3</span>
+                <span class="page-card__layout">4コマ構成</span>
+              </div>
+              <div class="page-card__thumb">
+                <span class="page-card__thumb-icon" aria-hidden="true">🖼️</span>
+                <span class="page-card__thumb-title">画像生成プレビュー</span>
+                <span class="page-card__thumb-note">ここに生成された漫画画像が表示されます</span>
+              </div>
+            </article>
+            <article class="page-card">
+              <div class="page-card__head">
+                <span class="page-card__no">Page 4</span>
+                <span class="page-card__layout">4コマ構成</span>
+              </div>
+              <div class="page-card__thumb">
+                <span class="page-card__thumb-icon" aria-hidden="true">🖼️</span>
+                <span class="page-card__thumb-title">画像生成プレビュー</span>
+                <span class="page-card__thumb-note">ここに生成された漫画画像が表示されます</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    Manga Creative Studio — 画面イメージ確認用のモックアップです（API連携は未実装）
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "name": "manga-creative-studio",
+  "version": "1.0.0",
+  "description": "漫画制作アプリ（企画アシスタント＋漫画生成）のモックアップ + OpenAI API連携",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  }
+}
